@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIDemo", "WebAPIDemo\WebAPIDemo.csproj", "{09A4C19B-90B8-4652-B6B9-0109354EB455}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPIDemo", "WebAPIDemo\WebAPIDemo.csproj", "{09A4C19B-90B8-4652-B6B9-0109354EB455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProjectAPI", "XUnitTestProjectAPI\XUnitTestProjectAPI.csproj", "{6D521B00-38EE-4978-B79E-2EB8E766AA09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestProjectAPI", "XUnitTestProjectAPI\XUnitTestProjectAPI.csproj", "{6D521B00-38EE-4978-B79E-2EB8E766AA09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
