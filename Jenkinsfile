@@ -17,12 +17,12 @@ pipeline {
 				bat 'dotnet test XUnitTestProjectAPI/XUnitTestProjectAPI.csproj -p:Configuration=release -v:q'
             }
         }
-    }	
 
-	post  {
-     	success{
-     		archiveArtifacts artifacts: '**', fingerprint:true
-			bat 'dotnet APIDemo/bin/Release/netcoreapp2.1/APIDemo.dll'
-     		   }
-		 }
-	}
+		stage('Publish') {
+            steps {
+                echo '===========================Publish=============================='
+				bat 'dotnet publish'
+            }
+        }
+    }	
+}
