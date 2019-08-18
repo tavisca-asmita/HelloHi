@@ -7,7 +7,7 @@ pipeline {
 		string(defaultValue: "testapi", description: 'Docker Image', name: 'image')
 		string(defaultValue: "asmitasharma28/webapi", description: 'Repository Name', name: 'repository')
 		string(defaultValue: "aswebapi", description: 'Tag', name: 'tag')
-		string(defaultValue: 8089, description: 'Port No.', name: 'port')
+		string(defaultValue: "8089", description: 'Port No.', name: 'port')
     }
 	
     stages { 
