@@ -45,10 +45,10 @@ pipeline {
 		stage('Dockerhub Login') {
         	
         	steps{
-				withCredentials([string(credentialsId: 'password', variable: 'userCredentials')]) {
+				withCredentials([usernamePassword(credentialsId: 'webapi', passwordVariable: 'pass', usernameVariable: 'user')])  {
 
 					echo '==============================Login to Dockerhub================================='
-					bat 'docker login'
+					bat 'docker login -p %pass% -u %user%'
 	
 				}	
         			
