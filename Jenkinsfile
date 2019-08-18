@@ -45,7 +45,8 @@ pipeline {
 		stage('Dockerhub Login') {
         	
         	steps{
-				withCredentials([usernamePassword(credentialsId: 'api', passwordVariable: 'pass', usernameVariable: 'user')]) {
+				withCredentials([string(credentialsId: 'password', variable: 'userCredentials')]) {
+
 					echo '==============================Login to Dockerhub================================='
 					bat 'docker login -p %pass% -u %user%'
 	
