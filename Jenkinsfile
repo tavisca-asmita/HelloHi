@@ -48,7 +48,7 @@ pipeline {
 				withCredentials([usernamePassword(credentialsId: '1234567890987654321', passwordVariable: 'pass', usernameVariable: 'user')]) {
 					echo '==============================Login to Dockerhub================================='
 					bat 'docker login -p %pass% -u %user%'
-}   	
+	
 				}	
         			
         	}
@@ -88,5 +88,4 @@ pipeline {
         }
 		
     }
-
 }
