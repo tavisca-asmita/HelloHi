@@ -7,7 +7,9 @@ pipeline {
 		string(defaultValue: "testapi", description: 'Docker Image', name: 'image')
 		string(defaultValue: "asmitasharma28/webapi", description: 'Repository Name', name: 'repository')
 		string(defaultValue: "aswebapi", description: 'Tag', name: 'tag')
-		string(defaultValue: "8089", description: 'Port No.', name: 'port')
+		string(defaultValue: "8089", description: 'Port No. to Bind to', name: 'toPort')
+		string(defaultValue: "6001", description: 'Port No. to Bind from', name: 'fromPort')
+
     }
 	
     stages { 
@@ -77,14 +79,14 @@ pipeline {
         	
         	steps{
         		echo '=====================================Run the image==============================================='
-				bat 'docker run -p %port%:6001 %repository%:%tag% '        		
+				bat 'docker run -p %toPort%:%fromPort% %repository%:%tag% '        		
         	}
         }
 		stage('SonarQube stage') {
         	
         	steps{
         		echo '======================================Run the image=========================================='
-				bat 'docker run -p %port%:6001 %repository%:%tag% '        		
+				bat 'docker run -p %toPort%:%fromPort% %repository%:%tag% '        		
         	}
         }
 		
