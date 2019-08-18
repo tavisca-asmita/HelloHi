@@ -7,8 +7,8 @@ pipeline {
 		string(defaultValue: "testapi", description: 'Docker Image', name: 'image')
 		string(defaultValue: "asmitasharma28/webapi", description: 'Repository Name', name: 'repository')
 		string(defaultValue: "aswebapi", description: 'Tag', name: 'tag')
-		string(defaultValue: "8089", description: 'Port No. to Bind to', name: 'toPort')
-		string(defaultValue: "6001", description: 'Port No. to Bind from', name: 'fromPort')
+		string(defaultValue: "8089", description: 'Port No. to bind to', name: 'toPort')
+		string(defaultValue: "6001", description: 'Port No. to bind from', name: 'fromPort')
 
     }
 	
