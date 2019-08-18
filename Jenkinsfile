@@ -6,8 +6,8 @@ pipeline {
 		string(defaultValue: "XUnitTestProjectAPI/XUnitTestProjectAPI.csproj", description: 'Test File', name: 'test')
 		string(defaultValue: "testapi", description: 'Docker Image', name: 'image')
 		string(defaultValue: "asmitasharma28/webapi", description: 'Repository Name', name: 'repository')
-
 		string(defaultValue: "aswebapi", description: 'Tag', name: 'tag')
+		string(defaultValue: "8089", description: 'Port No.', name: 'port')
     }
 	
     stages { 
@@ -77,14 +77,14 @@ pipeline {
         	
         	steps{
         		echo '=====================================Run the image==============================================='
-				bat 'docker run -p 8087:6001 %repository%:%tag% '        		
+				bat 'docker run -p %port%:6001 %repository%:%tag% '        		
         	}
         }
 		stage('SonarQube stage') {
         	
         	steps{
         		echo '======================================Run the image=========================================='
-				bat 'docker run -p 8087:6001 %repository%:%tag% '        		
+				bat 'docker run -p %port%:6001 %repository%:%tag% '        		
         	}
         }
 		
