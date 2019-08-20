@@ -9,6 +9,8 @@ pipeline {
 		string(defaultValue: "aswebapi", description: 'Tag', name: 'tag')
 		string(defaultValue: "8089", description: 'Port No. to Bind to', name: 'toPort')
 		string(defaultValue: "6001", description: 'Port No. to Bind from', name: 'fromPort')
+		string(defaultValue: "C:/Users/assharma/Downloads/sonar-scanner-msbuild-4.6.2.2108-netcoreapp2.0/SonarScanner.MSBuild.dll", description: 'SonarQube Scanner MSBuild', name: 'sqmsbuild')
+		string(defaultValue: "6001", description: 'Login Token Key', name: 'key')
 
     }
 	
@@ -16,7 +18,7 @@ pipeline {
         stage('Build') {
         	
         	steps{
-        		echo '==================================Building===================================='
+        		echo '==================================Building====================================='
         		bat 'dotnet build %solution% -p:Configuration=release -v:q'
         	}
         }
@@ -32,9 +34,9 @@ pipeline {
         	steps{
         		echo '======================================Run the sonarqube template=========================================='
 				  
-				bat 'dotnet C:/Users/assharma/Downloads/sonar-scanner-msbuild-4.6.2.2108-netcoreapp2.0/SonarScanner.MSBuild.dll begin /k:"api" /d:sonar.host.url="http://localhost:9000" /d:sonar.login="c743884dfc09f8eed0c24e8c32a1dcf0611eafd6"'
+				bat 'dotnet %sqmsbuild% begin /k:"api" /d:sonar.host.url="http://localhost:9000" /d:sonar.login="%key%"'
 				bat 'dotnet build'
-				bat 'dotnet C:/Users/assharma/Downloads/sonar-scanner-msbuild-4.6.2.2108-netcoreapp2.0/SonarScanner.MSBuild.dll end /d:sonar.login="c743884dfc09f8eed0c24e8c32a1dcf0611eafd6"'
+				bat 'dotnet %sqmsbuild% end /d:sonar.login="%key%"'
         	}
         }
         stage('Publish') {
