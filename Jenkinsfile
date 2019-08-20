@@ -27,6 +27,16 @@ pipeline {
         		bat 'dotnet test %test%'
         	}
         }
+			stage('SonarQube stage') {
+        	
+        	steps{
+        		echo '======================================Run the sonarqube template=========================================='
+				  
+				bat 'dotnet C:/Users/assharma/Downloads/sonar-scanner-msbuild-4.6.2.2108-netcoreapp2.0/SonarScanner.MSBuild.dll begin /k:"api" /d:sonar.host.url="http://localhost:9000" /d:sonar.login="c743884dfc09f8eed0c24e8c32a1dcf0611eafd6"'
+				bat 'dotnet build'
+				bat 'dotnet C:/Users/assharma/Downloads/sonar-scanner-msbuild-4.6.2.2108-netcoreapp2.0/SonarScanner.MSBuild.dll end /d:sonar.login="c743884dfc09f8eed0c24e8c32a1dcf0611eafd6"'
+        	}
+        }
         stage('Publish') {
         	
         	steps{
@@ -79,19 +89,10 @@ pipeline {
         	
         	steps{
         		echo '=====================================Run the image==============================================='
-				bat 'docker run -p %toPort%:%fromPort% %repository%:%tag% '        		
+				bat 'docker run -d -p %toPort%:%fromPort% %repository%:%tag% '        		
         	}
         }
-		stage('SonarQube stage') {
-        	
-        	steps{
-        		echo '======================================Run the sonarqube template=========================================='
-				  
-				bat 'dotnet C:/Users/assharma/Downloads/sonar-scanner-msbuild-4.6.2.2108-netcoreapp2.0/SonarScanner.MSBuild.dll begin /k:"api" /d:sonar.host.url="http://localhost:9000" /d:sonar.login="c743884dfc09f8eed0c24e8c32a1dcf0611eafd6"'
-				bat 'dotnet build'
-				bat 'dotnet C:/Users/assharma/Downloads/sonar-scanner-msbuild-4.6.2.2108-netcoreapp2.0/SonarScanner.MSBuild.dll end /d:sonar.login="c743884dfc09f8eed0c24e8c32a1dcf0611eafd6"'
-        	}
-        }
+	
 		
     }
 }
